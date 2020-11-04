@@ -1,46 +1,53 @@
-print("--------------------------------")
-print("Programa para o calculo de juros")
-print("--------------------------------")
+print("-"*28)
+print("Interest calculation program")
+print("-"*28)
 
-def imprimirMensagem():
-    print(" - Digite (1) para calcular juros simples")
-    print(" - Digite (2) para calcular juros compostos")
-    print(" - Digite (0) para sair do programa")
+def printMessage():
+    print(" - Enter (1) to calculate simple interest")
+    print(" - Enter (2) to calculate compound interest")
+    print(" - Enter (0) to exit the program")
 
-imprimirMensagem()
-resp = int(input(">>> "))
+printMessage()
+op = int(input(">>> "))
 
-while resp != 0:
-    if resp == 1:
-        print("\nJuros simples\n")
-        capital = float(input("Digite o capital: "))
-        taxaJuros = float(input("Digite a taxa de juros em meses: "))
-        tempo = int(input("Digite o tempo em meses: "))
-        taxaJuros /= 100 
-        montante = capital*(1+taxaJuros*tempo)
-        juros = montante - capital
-        print(f'\nO rendimento no final do periodo será R$ {montante:.2f}')
-        print(f'Juros final: R$ {juros:.2f}')
+while op != 0:
+    if op == 1:
+        print("\nSimple interest\n")
+        principle = float(input("Enter the initial balance: "))
+        interestRate = float(input("Enter the interest rate in months: "))
+        time = int(input("Enter the time in months: "))
+
+        interestRate /= 100 
+        total = principle*(1+interestRate*time)
+        interest = total - principle
+
+        print(f'\nThe total amount is R$ {total:.2f}')
+        print(f'The yield is: R$ {interest:.2f}')
         print("\n")
-        imprimirMensagem()
-        resp = int(input(">>> "))
         
-    elif resp == 2:
-        print("Juros compostos\n")
-        capital = float(input("Digite o capital: "))
-        taxaJuros = float(input("Digite a taxa de juros em meses: "))
-        tempo = int(input("Digite o tempo em meses: "))
-        taxaJuros /= 100 
-        montante = capital*(1+taxaJuros)**tempo
-        juros = montante - capital
-        print(f'\nO rendimento no final do periodo será R$ {montante:.2f}')
-        print(f'Juros final: R$ {juros:.2f}')
+        printMessage()
+        op = int(input(">>> "))
         
+    elif op == 2:
+        print("Compound interest\n")
+        principle = float(input("Enter the initial balance: "))
+        interestRate = float(input("Enter the interest rate in months: "))
+        time = int(input("Enter the time in months: "))
+        
+        interestRate /= 100 
+        total = principle*(1+interestRate)**time
+        interest = total - principle
+        
+        print(f'\nThe total amount is R$ {total:.2f}')
+        print(f'The yield is: R$ {interest:.2f}')
         print("\n")
-        imprimirMensagem()
-        resp = int(input(">>> "))
+        
+        printMessage()
+        op = int(input(">>> "))
+        
     else:
-        print("\nResposta inválida\n")
-        imprimirMensagem()
-        resp = int(input(">>> "))
-print("\nFIM DO PROGRAMA")
+        print("\nInvalid response\n")
+        printMessage()
+        op = int(input(">>> "))
+        
+print("\nEND OF PROGRAM")
